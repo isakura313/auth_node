@@ -1,5 +1,6 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator/check");
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
@@ -16,7 +17,7 @@ const User = require("../model/User");
 router.post(
   "/signup",
   [
-    check("username", "Please Enter a Valid Username")
+    check("username", "Пожалуйста, введите валидное имя")
       .not()
       .isEmpty(),
     check("email", "Please enter a valid email").isEmail(),
