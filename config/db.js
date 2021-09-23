@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const key = require('../key')
+const mongoose = require("mongoose"); // Mongoose представляет специальную ODM-библиотеку (Object Data Modelling) для работы с MongoDB, которая позволяет сопоставлять объекты классов и документы коллекций из базы данных. 
+const key = require('../key') // добавляем ключ
 
 // Replace this with your MONGOURI.
 const MONGOURI = key.key;
@@ -9,7 +9,7 @@ const InitiateMongoServer = async () => {
     await mongoose.connect(MONGOURI, {
       useNewUrlParser: true
     });
-    console.log("Connected to DB !!");
+    console.log("Подключение к базе данных");
   } catch (e) {
     console.log(e);
     throw e;
