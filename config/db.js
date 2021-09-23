@@ -2,6 +2,7 @@ const mongoose = require("mongoose"); // Mongoose представляет сп�
 const key = require('../key') // добавляем ключ
 
 // Replace this with your MONGOURI.
+console.log(key.key)
 const MONGOURI = key.key;
 
 const InitiateMongoServer = async () => {
