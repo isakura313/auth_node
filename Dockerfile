@@ -1,13 +1,21 @@
-FROM mhart/alpine-node:latest
+# from base image node
+FROM node:latest
 
-RUN rm -rf /tmp/node_modules
-ADD package.json /tmp/package.json
-RUN cd /tmp && npm install
-RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
+RUN mkdir -p /usr/src/app
 
-WORKDIR /opt/app
-ADD . /opt/app
+WORKDIR /usr/src/app
 
-EXPOSE 3007
+# copying all the files from your file system to container file system
+COPY package.json .
 
-CMD ["node", "index.js"]
+# install all dependencies
+RUN npm install
+
+# copy oter files as well
+COPY ./ .
+
+#expose the port
+EXPOSE 3081
+
+# command to run when intantiate an image
+CMD ["npm","run", "dev"]
