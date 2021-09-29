@@ -9,7 +9,7 @@ InitiateMongoServer(); // Берем Монго сервер
 const app = express();
 
 // PORT
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3081;
 
 // Middleware
 app.use(bodyParser.json());
