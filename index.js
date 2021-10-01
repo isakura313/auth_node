@@ -1,9 +1,10 @@
-const express = require("express");  
+const express = require("express");
 const bodyParser = require("body-parser");
 const user = require("./routes/user");
+const file = require("./routes/file");
 const InitiateMongoServer = require("./config/db");
 
-// Initiate Mongo Server 
+// Initiate Mongo Server
 InitiateMongoServer(); // Берем Монго сервер
 
 const app = express();
@@ -13,6 +14,8 @@ const PORT = process.env.PORT || 3081;
 
 // Middleware
 app.use(bodyParser.json());
+app.use("/public", express.static("public"));
+app.use("/files", file);
 
 app.get("/", (req, res) => {
   res.json({ message: "API запущен" });
