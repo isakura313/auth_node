@@ -4,7 +4,7 @@ const user = require("./routes/user");
 const file = require("./routes/file");
 const InitiateMongoServer = require("./config/db");
 
-// Initiate Mongo Server
+
 InitiateMongoServer(); // Берем Монго сервер
 
 const app = express();
@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 3081;
 
 // Middleware
 app.use(bodyParser.json());
-app.use("/public", express.static("public"));
-app.use("/files", file);
+app.use("/public", express.static("public")); //раздаем статику - возможно это будет nuxt
+app.use("/files", file); /// раздаем файлы
 
 app.get("/", (req, res) => {
   res.json({ message: "API запущен" });

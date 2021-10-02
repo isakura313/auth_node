@@ -17,7 +17,7 @@ const User = require("../model/User");
 router.post(
   "/signup",
   [
-    check("username", "Пожалуйста, введите валидное имя")
+    check("user", "Пожалуйста, введите валидное имя")
       .not()
       .isEmpty(),
     check("email", "Please enter a valid email").isEmail(),
@@ -33,7 +33,7 @@ router.post(
       });
     }
 
-    const { username, email, password } = req.body;
+    const { user, email, password } = req.body;
     try {
       let user = await User.findOne({
         email
@@ -45,7 +45,7 @@ router.post(
       }
 
       user = new User({
-        username,
+        user,
         email,
         password
       });
