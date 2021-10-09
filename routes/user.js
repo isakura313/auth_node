@@ -61,7 +61,7 @@ router.post(
 
       jwt.sign(
         payload,
-        "randomString",
+        "paul123",
         {
           expiresIn: 10000,
         },
@@ -125,7 +125,7 @@ router.post(
 
       jwt.sign(
         payload,
-        "randomString",
+        "paul123",
         {
           expiresIn: 3600,
         },
