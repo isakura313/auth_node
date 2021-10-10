@@ -17,6 +17,10 @@ const UserSchema = mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  likedPhotos: {
+    type: Array,
+    default: [],
+  },
 });
 
 // export model user with UserSchema

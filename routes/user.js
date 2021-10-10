@@ -160,5 +160,34 @@ router.get("/me", auth, async (req, res) => {
     res.send({ message: "Error in Fetching user" });
   }
 });
+//получение списка лайков
+router.get("/likes", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.id);
+    res.json(user.likedPhotos); // возвращаем likes
+  } catch (e) {
+    res.send("Ошибка получения лайков");
+  }
+});
+router.post("likes", auth, async (req, res) => {
+  try {
+    const user_likes = await User.findById(req.user.id);
+    user_likes.push(req.id_photo);
+  } catch (e) {
+    res.send("ошибка установки лайков");
+  }
+  router.delete("likes", auth, async (req, res) => {
+    try {
+      const user_likes = await User.findById(req.user.id);
+      user_likes.filter(
+        (id = () => {
+          return user != req.id_photo;
+        })
+      );
+    } catch (e) {
+      res.send("Ошибка удаления лайка");
+    }
+  });
+});
 
 module.exports = router;
